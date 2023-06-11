@@ -7,7 +7,7 @@ section {
   border: 2px solid red;
   width: 60%;
   max-width: 80%;
-  height: 2500px;
+  height: 2600px;
 }
 
 .item {
@@ -1826,37 +1826,256 @@ header {
 
 .day10 {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4c4c4c;
 }
 
-.prueba > * {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.back {
-  background-color: red;
-  backface-visibility: visible;
-  transition: transform 2s linear;
-}
-
-.front {
-  background-color: blue;
-  backface-visibility: hidden;
-  transition: transform 2s linear;
-}
-
-.prueba {
+.clock {
   position: relative;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: #242424;
+  box-shadow: 0 0 0 8px #3a3a3a;
+}
+
+.clock svg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 200px;
+  width: 200px;
+  transform: rotate(270deg);
+}
+
+.clock svg circle {
+  stroke-dasharray: 595;
+  stroke-dashoffset: 595;
+  animation: filling 5s linear infinite;
+}
+
+@keyframes filling {
+  50% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -595;
+  }
+}
+
+.borde {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: dotted 4px #fff9;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+}
+
+.infoClock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.date,
+.infoHealth {
+  font-size: 0.75vw;
+}
+
+.hour {
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+
+.infoHealth {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heartClock {
+  display: inline-block;
+  margin-right: 3px;
+  margin-bottom: -2px;
+  width: 12px;
+  height: 12px;
+  animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* day 11 */
+
+.day11 {
+  position: relative;
+  background-color: #e1c9ab;
+}
+
+.floor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  background-color: #232323;
+}
+
+.boot1 {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform-origin: 0 0;
+  animation: steps 2s 0.75s linear infinite alternate;
+}
+
+.boot2 {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform-origin: 0 0;
+  animation: steps 2s linear infinite alternate;
+}
+
+@keyframes steps {
+  25% {
+    transform: translateY(-15px);
+  }
+
+  50% {
+    transform: translateX(50px) translateY(100px) rotate(-45deg);
+  }
+
+  100% {
+    transform: translateX(-50px) translateY(-10px) rotate(45deg);
+  }
+}
+
+.boot1 img,
+.boot2 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.day12 {
+  background-color: #4cb6de;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+.day12 blockquote {
+  width: 90%;
+  height: 60%;
+  font-size: 1.8vw;
+  line-height: 35px;
+  padding: 5px;
+  position: relative;
+}
+
+.day12 blockquote .obsession {
+  background-color: #286f8a;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.obsession:hover.infoBlock{
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(20px);
+}
+
+.day12 cite {
+  display: inline-block;
+  align-self: flex-start;
+  margin-left: 25px;
+  font-size: 1.3vw;
+  font-weight: normal;
+}
+
+#quoting {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: -10px;
   width: 100px;
   height: 100px;
-  top: 50%;
-  left: 50%;
-  transition: transform 2s linear;
-  transform-style: preserve-3d;
-  perspective: 100 px;
+  font-size: 7vw;
+  opacity: 0.3;
 }
 
-.prueba:hover > * {
-  transform: rotateY(180deg) scale3d(1, 1, 2);
+.infoBlock {
+  position: absolute;
+  top: 20px;
+  width: 80%;
+  height: 110px;
+  background-image: linear-gradient(#fff 30%, #286f8a 30%);
+  display: flex;
+  flex-direction: column;
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 45% 95%, 50% 100%, 45% 95%, 0% 100%, 0% 0%); */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    55% 90%,
+    50% 100%,
+    45% 90%,
+    0% 90%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: transform 1s linear;
+}
+
+.infoBlock p {
+  padding: 10px;
+}
+
+.titleBlock {
+  color: #286f8a;
+  padding: 5px 0 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+  font-size: 0.9vw;
+}
+
+.titleBlock span:nth-child(2) {
+  font-size: 1.1vw;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+
+.titleBlock span:nth-child(2):hover {
+  transform: scale(1.2);
 }
