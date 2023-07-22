@@ -10,11 +10,10 @@ let $menu2 = d.querySelector(".dropDown svg");
 let $panel = d.querySelector(".panel");
 let $hideMenu = d.querySelector(".hideMenu");
 
-let $open = d.querySelector(".phot");
+let $open = d.querySelectorAll(".phot");
 let $bottom = d.querySelector(".infoBottom");
 let $top = d.querySelector(".infoTop");
 let $imgTop = d.querySelector(".imageTransition");
-let $containerTopBottom = d.querySelector(".infoPhotoTransition");
 let $close = d.querySelector(".closeInfoTransition");
 
 let $obsession = d.querySelector(".obsession");
@@ -36,19 +35,20 @@ d.addEventListener("click", (e) => {
     $panel.classList.toggle("move");
     $hideMenu.classList.toggle("move2");
   }
-
-  if (e.target === $open) {
-    $top.classList.add("moveTop");
-    $bottom.classList.add("moveBottom");
-    $imgTop.classList.add("moveImg");
-    $containerTopBottom.classList.add("displayContainer");
-  }
+  $open.forEach((element) => {
+    if (e.target === element) {
+      $top.classList.toggle("moveTop");
+      $bottom.classList.toggle("moveBottom");
+      $imgTop.classList.toggle("moveImg");
+      $close.classList.toggle("moveClose");
+    }
+  });
 
   if (e.target === $close) {
-    $top.classList.remove("moveTop");
-    $bottom.classList.remove("moveBottom");
-    $imgTop.classList.remove("moveImg");
-    $containerTopBottom.classList.remove("displayContainer");
+    $top.classList.toggle("moveTop");
+    $bottom.classList.toggle("moveBottom");
+    $imgTop.classList.toggle("moveImg");
+    $close.classList.toggle("moveClose");
   }
 });
 
