@@ -1,30 +1,32 @@
+/* VALUES GLOBAL */
+
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, calc(400px - 25px));
+  grid-template-rows: repeat(10, 400px);
   gap: 50px;
   margin: 0 auto;
   border: 2px solid red;
   width: 60%;
   max-width: 80%;
-  height: 3200px;
 }
 
 .item {
-  border: 2px solid rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
-  height: 400px;
-}
-
-.day1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* -----------------DAYS------------------- */
+
+.day1 {
   background-image: linear-gradient(to top right, #4552a7, #4ba7c0);
 }
 
 .number100 {
-  /* border: 2px solid black; */
+  /* border: 1px solid green; */
   width: 200px;
   height: 200px;
   font-family: "Slabo 27px", serif;
@@ -35,25 +37,24 @@ main {
   content: "";
   width: 20px;
   height: 40px;
-  border: 2px solid rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: 0;
   transform-origin: 0% 0%;
   transform: rotate(45deg);
   border-radius: 2px;
+  box-shadow: 0.5px 0.5px 10px 1px rgb(255, 255, 255);
 }
 
 .number100::after {
   content: "";
   width: 25px;
   height: 100px;
-  border: 2px solid rgb(255, 255, 255);
   background-color: white;
   position: absolute;
   top: 0;
   border-radius: 2px;
-  box-shadow: 0.5px 0.5px 10px 1px rgb(202, 201, 201);
+  box-shadow: 0.5px 0.5px 10px 1px rgb(255, 255, 255);
 }
 
 .zero {
@@ -64,7 +65,7 @@ main {
   position: absolute;
   left: 20px;
   filter: drop-shadow(80px 0px rgb(255, 255, 255));
-  box-shadow: 0.5px 0.5px 10px 1px rgb(202, 201, 201);
+  box-shadow: 0.5px 0.5px 10px 1px rgb(255, 255, 255);
 }
 
 .days {
@@ -88,12 +89,9 @@ main {
   font-size: 20px;
 }
 
-/* Day 2 */
+/* day 2  */
 
 .day2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #3faf82;
 }
 
@@ -105,8 +103,29 @@ main {
   position: relative;
 }
 
+.bar {
+  width: 100%;
+  height: 8px;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: 0.5px 0.5px 10px 1px rgb(124, 117, 117);
+  transition: top 0.2s linear, transform 0.2s linear 0.3s;
+}
+
+.bar1 {
+  top: 0;
+}
+
+.bar2 {
+  top: 19px;
+}
+
+.bar3 {
+  top: 38px;
+}
+
 .activeMenu1 {
-  margin-top: 19px;
   top: 19px;
   transform: rotate(135deg);
 }
@@ -116,40 +135,14 @@ main {
 }
 
 .activeMenu3 {
-  margin-top: -19px;
-  transform: rotate(45deg);
-}
-
-.bar {
-  width: 100%;
-  height: 8px;
-  background-color: white;
-  border-radius: 10px;
-  position: absolute;
-  box-shadow: 0.5px 0.5px 10px 1px rgb(124, 117, 117);
-  transition: all 0.2s linear, transform 0.2s linear 0.3s;
-}
-
-.bar1 {
-  top: 0;
-}
-
-.bar2 {
   top: 19px;
-  transition: all 0.2s linear;
-}
-
-.bar3 {
-  top: 38px;
+  transform: rotate(45deg);
 }
 
 /* day3 */
 
 .day3 {
   background-color: #272c34;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .scene {
@@ -164,10 +157,6 @@ main {
 }
 
 @keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
   50% {
     opacity: 0.8;
   }
@@ -184,19 +173,7 @@ main {
   left: -30px;
   border-radius: 50%;
   /* border: 2px solid black; */
-  z-index: 0;
-  animation: out 4s linear infinite normal;
-}
-
-.sun {
-  position: absolute;
-  left: 100px;
-  border-radius: 50%;
-  /* border: 2px solid green; */
-  width: 40px;
-  height: 40px;
-  background-color: #ffef00;
-  z-index: 1;
+  animation: out 4s linear infinite;
 }
 
 @keyframes out {
@@ -217,6 +194,16 @@ main {
   }
 }
 
+.sun {
+  position: absolute;
+  left: 100px;
+  border-radius: 50%;
+  /* border: 2px solid green; */
+  width: 40px;
+  height: 40px;
+  background-color: #ffef00;
+}
+
 .sand {
   /* border: 2px solid white; */
   width: 100%;
@@ -224,13 +211,12 @@ main {
   position: absolute;
   bottom: 0;
   background-color: #f0de75;
-  z-index: 2;
 }
 
 .pyramid {
   position: absolute;
   left: 40px;
-  top: 60px;
+  top: 65px;
   width: 60%;
   height: 60px;
   /* border: 2px solid red; */
@@ -241,7 +227,6 @@ main {
     white 180deg 225deg,
     transparent 225deg
   );
-  z-index: 4;
   animation: gradient 4s linear infinite;
 }
 
@@ -307,9 +292,9 @@ main {
   }
 }
 
-.shadow {
+.shadowPyramid {
   position: absolute;
-  top: 120px;
+  top: 125px;
   left: 40px;
   width: 60%;
   height: 60px;
@@ -321,15 +306,11 @@ main {
     #4c4d4050 180deg 225deg,
     transparent 225deg
   );
-  z-index: 3;
 }
 
 /* day 4 */
 
 .day4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #e56262;
 }
 
@@ -341,20 +322,19 @@ main {
 }
 
 .drop {
+  position: absolute;
   left: 0;
   top: 0;
-  position: absolute;
   border-radius: 50%;
+  background-color: white;
   box-shadow: 5px 1px 20px 0px #00000050;
 }
 
 .drop1 {
   width: 100px;
   height: 100px;
-  background-color: white;
   /* border: 2px solid rgb(0, 38, 255); */
-  animation: scale1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate
-    both;
+  animation: scale1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
 }
 
 @keyframes scale1 {
@@ -374,9 +354,7 @@ main {
   width: 70px;
   height: 70px;
   /* border: 2px solid rgb(0, 255, 0); */
-  background-color: white;
-  animation: scale2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate
-    both;
+  animation: scale2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
 }
 
 @keyframes scale2 {
@@ -396,9 +374,7 @@ main {
   width: 35px;
   height: 35px;
   /* border: 2px solid yellow; */
-  background-color: white;
-  animation: scale3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate
-    both;
+  animation: scale3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
 }
 
 @keyframes scale3 {
@@ -416,9 +392,6 @@ main {
 
 .day5 {
   background-color: #42a7a1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .forecast {
@@ -429,7 +402,7 @@ main {
   overflow: hidden;
 }
 
-header {
+.headerForecast {
   width: 100%;
   height: 30%;
   background-color: #f1ba64;
@@ -442,7 +415,7 @@ header {
   /* border: 2px solid green; */
 }
 
-.title {
+.titleForecast {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -450,21 +423,21 @@ header {
   font-size: 1vw;
 }
 
-.title > * {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 12px;
+.titleForecast > * {
+  font-weight: bolder;
 }
 
-.titleWeekly,
-.titlePrice {
-  font-weight: bolder;
+.weeklyForecast,
+.priceForecast {
   font-size: 14px;
 }
 
-.forecastInfo {
+.revenueForecast,
+.dateForecast {
+  font-size: 12px;
+}
+
+.forecastAllInfo {
   width: 100%;
   height: 70%;
   background-color: #ffffff;
@@ -473,56 +446,8 @@ header {
   position: relative;
 }
 
-.infoForecast {
+#svgForecast1 {
   width: 100%;
-  height: 27.5%;
-  border-bottom: 1px solid #80808050;
-}
-
-.info1 {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 25px;
-}
-
-.view,
-.purchase {
-  /* border: 1px solid red; */
-  text-align: center;
-  position: relative;
-  font-size: 10px;
-}
-
-.view::before,
-.purchase::before {
-  content: "";
-  position: absolute;
-  top: 40%;
-  left: -15px;
-  width: 10px;
-  height: 3px;
-  background-color: red;
-}
-
-.purchase::before {
-  background-color: #4552a7;
-}
-
-.info4 {
-  font-size: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-
-/* .info4 > *{
-  border: 2px solid pink;
-} */
-
-#svg1 {
-  width: 100%;
-  height: auto;
   position: absolute;
   top: 35%;
   fill: none;
@@ -530,9 +455,8 @@ header {
   stroke-width: 0.3;
 }
 
-#svg2 {
+#svgForecast2 {
   width: 90%;
-  height: auto;
   position: absolute;
   top: 55%;
   fill: none;
@@ -555,8 +479,7 @@ header {
   left: -12px;
   width: 30px;
   height: 25px;
-  background-color: #ff0000;
-  z-index: 999;
+  /* background-color: #ff0000; */
   transform: translateY(50%);
   opacity: 0;
   transition: transform 0.5s linear, opacity 0.5s linear;
@@ -569,11 +492,6 @@ header {
     36% 75%,
     0% 75%
   );
-}
-
-.point::after {
-  content: "589";
-  position: absolute;
   text-align: center;
   color: white;
   font-size: 10px;
@@ -581,6 +499,10 @@ header {
 
 .point.blue::after {
   background-color: blue;
+}
+
+.point.red::after {
+  background-color: rgb(255, 0, 0);
 }
 
 .point:not(.blue) {
@@ -592,7 +514,7 @@ header {
 }
 
 .point:hover.point::after {
-  transform: translateY(0%);
+  transform: translateY(0);
   opacity: 1;
 }
 
@@ -720,12 +642,55 @@ header {
   content: "20";
 }
 
+.infoForecast {
+  width: 100%;
+  height: 27.5%;
+  border-bottom: 1px solid #80808050;
+}
+
+.info1Forecast {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+}
+
+.viewForecast,
+.purchaseForecast {
+  /* border: 1px solid red; */
+  text-align: center;
+  position: relative;
+  font-size: 10px;
+}
+
+.viewForecast::before,
+.purchaseForecast::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -15px;
+  width: 10px;
+  height: 3px;
+}
+
+.purchaseForecast::before {
+  background-color: #4552a7;
+}
+
+.viewForecast::before {
+  background-color: #ff0000;
+}
+
+.info2Forecast {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
 /* day 6 */
 
 .day6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-image: linear-gradient(to top right, #ecba6a, #cc7f4f);
 }
 
@@ -735,58 +700,7 @@ header {
   /* border: 2px solid red; */
   box-shadow: 5px 8px 10px 2px #00000070;
   position: relative;
-}
-
-.numbers {
-  width: 40%;
-  /* border: 2px solid pink; */
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.numbers > * {
-  border-bottom: 1px solid rgb(247, 247, 247);
-  background-color: #f5e8df;
   color: #786450;
-  width: 100%;
-  height: calc(100% / 3);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.5s linear;
-}
-
-.numbers > *:hover {
-  background-color: #e1cfc2;
-}
-
-.numbersChild > * {
-  width: 50px;
-  height: 50px;
-  /* border: 2px solid #42a7a1; */
-  line-height: 15px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.numbersChild strong {
-  font-weight: bolder;
-  font-size: 18px;
-}
-
-.numbersChild small {
-  font-weight: thin;
-  font-size: 11px;
 }
 
 .userProfile {
@@ -797,10 +711,9 @@ header {
   left: 0;
   top: 0;
   background-color: #ffffff;
-  color: #786450;
 }
 
-.photo {
+.photoProfile {
   position: absolute;
   top: 0;
   left: 0;
@@ -809,9 +722,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid red; */
 }
 
-.photo .photo1 {
+.photoProfile .photo {
   position: relative;
   border-radius: 50%;
   width: 80px;
@@ -819,7 +733,7 @@ header {
   cursor: pointer;
 }
 
-.photo .photo1::before {
+.photoProfile .photo::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -834,7 +748,7 @@ header {
   transition: transform 1s linear;
 }
 
-.photo .photo1::after {
+.photoProfile .photo::after {
   content: "";
   position: absolute;
   top: -8px;
@@ -849,22 +763,23 @@ header {
   transition: transform 1s linear;
 }
 
-.photo .photo1 img {
+.photoProfile .photo img {
+  position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.photo .photo1:hover:before {
+.photoProfile .photo:hover::before {
   transform: rotate(360deg);
 }
 
-.photo .photo1:hover:after {
+.photoProfile .photo:hover::after {
   transform: rotate(-360deg);
 }
 
-.name {
+.nameProfile {
   position: absolute;
   left: 0;
   top: 40%;
@@ -878,12 +793,12 @@ header {
   line-height: 16px;
 }
 
-.name strong {
+.nameProfile strong {
   font-weight: bold;
   font-size: 16px;
 }
 
-.name small {
+.nameProfile small {
   font-weight: thin;
   font-size: 11.5px;
 }
@@ -917,18 +832,63 @@ header {
   color: #ffffff;
 }
 
+.numbersProfile {
+  width: 40%;
+  /* border: 2px solid pink; */
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numbersProfile > * {
+  border-bottom: 1px solid rgb(247, 247, 247);
+  background-color: #f5e8df;
+  color: #786450;
+  width: 100%;
+  height: calc(100% / 3);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s linear;
+}
+
+.numbersProfile > *:hover {
+  background-color: #e1cfc2;
+}
+
+.numbersChildProfile > * {
+  width: 50px;
+  height: 50px;
+  /* border: 2px solid #42a7a1; */
+  line-height: 15px;
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.numbersChildProfile strong {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.numbersChildProfile small {
+  font-weight: thin;
+  font-size: 11px;
+}
+
 /* day 7 */
 
 .day7 {
   background-color: #264057;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  overflow: hidden;
-}
-
-.day7.hide {
   overflow: hidden;
 }
 
@@ -938,8 +898,6 @@ header {
   /* border: 2px solid red; */
   box-shadow: 5px 8px 10px 2px #00000070;
   position: relative;
-  overflow: hidden;
-  z-index: 1;
   transition: transform 0.5s linear;
 }
 
@@ -952,7 +910,6 @@ header {
   align-items: center;
   padding: 20px;
   position: relative;
-  z-index: 2;
 }
 
 .panel nav span {
@@ -963,29 +920,16 @@ header {
   stroke: #acd6fb;
   stroke-width: 1;
   transition: stroke 0.3s linear;
-  position: absolute;
-  cursor: pointer;
-  z-index: 4;
 }
 
 .panel nav .search,
-.panel nav .dropDown {
+.panel nav .dropDownPanel {
   width: 25px;
   height: 25px;
   position: relative;
   cursor: pointer;
   /* border: 1px solid red; */
-}
-
-.panel nav .search {
-  z-index: 3;
-}
-
-.panel nav .dropDown {
-  z-index: 6;
-}
-
-.panel nav .dropDown svg {
+  cursor: pointer;
   transition: opacity 0.3s linear;
 }
 
@@ -993,26 +937,48 @@ header {
   stroke: #ffffff;
 }
 
-.content {
+.boxInputPanel {
+  position: absolute;
+  width: 75%;
+  height: calc(100% - 20px);
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.inputPanel {
+  opacity: 0;
+  transform: translateX(30%);
+  transition: opacity 0.3s linear, transform 0.3s linear;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  text-align: left;
+  padding: 10px 0 10px 20px;
+  outline: none;
+  caret-color: gray;
+  border-radius: 20px;
+}
+
+.contentPanel {
   background-color: white;
   width: 100%;
   height: 80%;
   padding: 0 30px;
   color: #00000080;
   position: relative;
-  z-index: 5;
 }
 
-.content > * {
+.contentPanel > * {
   padding: 12px 0 0 10px;
   border-left: 3px solid #80808030;
   width: 100%;
   height: calc(100% / 3);
   position: relative;
   cursor: pointer;
+  /* border: 1px solid red; */
 }
 
-.content > *::before {
+.contentPanel > *::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -1025,47 +991,21 @@ header {
   background-color: white;
 }
 
-.content * strong {
+.contentPanel strong {
   font-weight: bold;
-  display: inline;
 }
 
-.content * span {
+.contentPanel span {
   font-weight: thin;
   font-size: 11px;
   display: block;
 }
 
-.content > *:hover {
+.contentPanel > *:hover {
   color: #5f98cd;
 }
 
-.boxInput {
-  position: absolute;
-  width: 75%;
-  height: calc(100% - 20px);
-  border-radius: 20px;
-  color: black;
-  display: inline-block;
-  overflow: hidden;
-}
-
-.input {
-  opacity: 0;
-  transform: translateX(30%);
-  transition: opacity 0.3s linear, transform 0.3s linear;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  text-align: left;
-  padding: 10px 0 10px 20px;
-  outline: none;
-  caret-color: gray;
-  border-radius: 20px;
-}
-
-.hideMenu {
+.hideMenuPanel {
   position: absolute;
   width: 40%;
   height: calc(100% - 30%);
@@ -1079,10 +1019,10 @@ header {
   align-items: flex-start;
   border-radius: 5px;
   color: #92b1cc;
-  transition: transform 0.5s linear;
+  transition: left 0.5s linear;
 }
 
-.hideMenu > * {
+.hideMenuPanel > * {
   width: 100%;
   height: 20%;
   padding: 15px 0 10px 20px;
@@ -1091,49 +1031,48 @@ header {
   transition: background-color 0.3s linear;
 }
 
-.hideMenu > *:hover {
+.hideMenuPanel > *:hover {
   color: #ffffff;
   background-color: #385269;
 }
 
-.active {
+.activeInputPanel {
   opacity: 1;
   transform: translateX(0%);
 }
 
-.move {
-  transform: translateX(50%);
-}
-
-.move2 {
-  transform: translateX(0%);
-}
-
-.hidy {
+.hiddenMenuPanel {
   opacity: 0;
   cursor: none;
   pointer-events: none;
 }
 
+.movePanel {
+  transform: translateX(50%);
+}
+
+.movePanelHide {
+  left: 13%;
+}
+
 /* day 8 */
 
 .day8 {
-  position: relative;
   background-color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.center {
-  position: absolute;
-}
-
-.ball {
+.centerBall {
   position: relative;
   width: 90px;
   height: 90px;
-  background: #fff;
+  border: 1px solid green;
+}
+
+.ball {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
   border-radius: 50%;
 }
 
@@ -1144,6 +1083,7 @@ header {
   width: 50px;
   height: 50px;
   transform: rotate(155deg);
+  border: 1px solid red;
 }
 .blubb-1:after {
   position: absolute;
@@ -1153,6 +1093,7 @@ header {
   height: 50px;
   background: #fff;
   border-radius: 50%;
+  border: 1px solid blue;
   transform-origin: 37px 37px;
   -webkit-animation: rotate 2.7s ease-in-out 0.2s infinite;
   animation: rotate 2.7s ease-in-out 0.2s infinite;
@@ -2319,14 +2260,24 @@ header {
   align-items: center;
 }
 
-.cardDay14-2::after{
+.cardDay14-2::after {
   content: "";
   position: absolute;
   top: 150px;
   width: 350px;
   height: 5px;
-  background-image: repeating-linear-gradient(to right, transparent 35%, #000 35% 40%, transparent 40% 43%, #000 43% 60%, transparent 60% 73%, #000 73% 84%, transparent 84% 96%, #000 96%);
-  animation: road 1s linear infinite ;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 35%,
+    #000 35% 40%,
+    transparent 40% 43%,
+    #000 43% 60%,
+    transparent 60% 73%,
+    #000 73% 84%,
+    transparent 84% 96%,
+    #000 96%
+  );
+  animation: road 1s linear infinite;
 }
 
 /* .cardDay14-1::after{
@@ -2339,7 +2290,6 @@ header {
   animation: road 1s linear infinite ;
 } */
 
-
 @keyframes road {
   0% {
     transform: translateX(150px);
@@ -2348,8 +2298,6 @@ header {
     transform: translateX(-150px);
   }
 }
-
-
 
 .cardDay14:hover {
   backface-visibility: visible;
@@ -2362,8 +2310,6 @@ header {
   height: 150px;
   fill: #000;
 }
-
-
 
 .svg_helicopter {
   border: 5px solid red;

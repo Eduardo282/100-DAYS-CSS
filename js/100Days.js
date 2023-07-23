@@ -1,14 +1,19 @@
 let d = document;
 
+/* DAY-2 */
 let $menu = d.getElementById("menu");
 let $bar1 = d.querySelector(".bar1");
 let $bar2 = d.querySelector(".bar2");
 let $bar3 = d.querySelector(".bar3");
-let $input = d.querySelector(".input");
+
+/* DAY-7 */
 let $lupa = d.querySelector(".search svg");
-let $menu2 = d.querySelector(".dropDown svg");
+let $input = d.querySelector(".inputPanel");
+let $menu2Icon = d.querySelector(".dropDownPanel svg");
+let $menu2 = d.querySelector(".dropDownPanel");
 let $panel = d.querySelector(".panel");
-let $hideMenu = d.querySelector(".hideMenu");
+let $hideMenu = d.querySelector(".hideMenuPanel");
+
 
 let $open = d.querySelectorAll(".phot");
 let $bottom = d.querySelector(".infoBottom");
@@ -20,21 +25,25 @@ let $obsession = d.querySelector(".obsession");
 let $infoBlock = d.querySelector(".infoBlock");
 
 d.addEventListener("click", (e) => {
+
+  /* DAY-2 */
   if (e.target === $menu) {
     $bar1.classList.toggle("activeMenu1");
     $bar2.classList.toggle("activeMenu2");
     $bar3.classList.toggle("activeMenu3");
   }
 
+ /* DAY-7 */
   if (e.target === $lupa) {
-    $input.classList.toggle("active");
-    $menu2.classList.toggle("hidy");
+    $input.classList.toggle("activeInputPanel");
+    $menu2.classList.toggle("hiddenMenuPanel");
+  }
+  if (e.target === $menu2Icon) {
+    $panel.classList.toggle("movePanel");
+    $hideMenu.classList.toggle("movePanelHide");
   }
 
-  if (e.target === $menu2) {
-    $panel.classList.toggle("move");
-    $hideMenu.classList.toggle("move2");
-  }
+
   $open.forEach((element) => {
     if (e.target === element) {
       $top.classList.toggle("moveTop");
